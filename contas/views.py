@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Transacao
 from .form import TransacaoForm
 from django.http import HttpResponse  #Importa a Classe HttpResponse do pacote http
@@ -30,7 +30,7 @@ def nova_transacao(request):
 
     if form.is_valid():
         form.save()
-        return listagem(request)
+        return redirect('url_listagem')
 
     #Fizemos a etapa de criar a colecao em um passo apenas
     return render(request, 'contas/form.html', {'form': form})
