@@ -16,6 +16,7 @@ def index(request):
 
     return render(request, 'contas/index.html', data)
 
+
 def listagem(request):
     data = {}
     # .objects eh um manager para o Model (DB)
@@ -34,3 +35,16 @@ def nova_transacao(request):
 
     #Fizemos a etapa de criar a colecao em um passo apenas
     return render(request, 'contas/form.html', {'form': form})
+
+
+def update(request, pk):
+    transacao = Transacao.objects.get(pk=pk)
+    form = TransacaoForm(request.POST or None, instance=transacao)
+
+    data = {}
+    if form.is_valid():
+        form.save()
+        return redirect('url_listagem')
+
+    data['form'] = form
+    return render(request, 'contas/form.html', data)

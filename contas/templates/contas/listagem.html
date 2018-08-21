@@ -20,7 +20,7 @@
         <tbody>
             {% for transacao in transacoes %}
             <tr>
-                <td>{{ transacao.descricao }}</td>
+                <td><a href="{% url 'url_update' transacao.id %}">{{ transacao.descricao }}</a></td>
                 <td>{{ transacao.dt_trasacao }}</td>
                 <td>R$ {{ transacao.valor }}</td>
                 <td>{{ transacao.categoria }}</td>
