@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from contas.views import index, listagem, nova_transacao, update
+from contas.views import index, listagem, nova_transacao, update, delete
 
 urlpatterns = [
     # URL para admin
@@ -26,6 +26,8 @@ urlpatterns = [
     path('', listagem, name='url_listagem'),
     # URL formulario de cadastro
     path('transacao', nova_transacao, name='url_transacao'),
-    # URL para UPDATE no DB. Paramatro passado eh a pk (PRIMARY KEY)
-    path('update/<int:pk>', update, name='url_update')
+    # URL para UPDATE no DB
+    path('update/<int:pk>', update, name='url_update'),
+    # URL para DELETE no DB
+    path('delete/<int:pk>', delete, name='url_delete')
 ]
