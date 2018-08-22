@@ -20,8 +20,6 @@ from contas.views import index, listagem, nova_transacao, update, delete
 urlpatterns = [
     # URL para admin
     path('admin/', admin.site.urls),
-    # URL para pagina home de teste
-    path('index', index),
     # URL para a listagem dos insets do banco
     path('', listagem, name='url_listagem'),
     # URL formulario de cadastro
